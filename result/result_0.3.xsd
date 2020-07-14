@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:hsk="http://yracnet.github.io/xmlns/result" targetNamespace="http://yracnet.github.io/xmlns/result" version="1.0">
+        
+  
+  
+  <xs:element name="result-file" type="hsk:resultFile"/>
+        
+  
+  
+  <xs:element name="result-group" type="hsk:resultGroup"/>
+        
+  
+  
+  <xs:complexType name="resultFile">
+            
+    
+    <xs:annotation>
+                  
+      
+      <xs:documentation>
+                        
+        
+        <![CDATA[<p>
+ ResultFile element to write a file to the path:
+ <i>[parent group path]</i>
+ <b>/${module}/${layer}/${dir}/${pkg as directory}/${name}.${type}</b>
+</p>
+<p>
+ <b>[parent group path]</b> it depends if the element is wrapped in the result-group.
+</p>]]>
+                      
+      
+      </xs:documentation>
+                
+    
+    </xs:annotation>
+                
+    
+    
+    <xs:simpleContent>
+                        
+      
+      
+      <xs:extension base="xs:string">
+                                
+        
+        
+        <xs:attribute name="skip" type="xs:boolean" use="required">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Skip write file]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="parser" type="xs:string">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Parse Name for file]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="module" type="xs:string">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Module Name]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="layer" type="xs:string">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Layer Name]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="dir" type="xs:string">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Directory File]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="pkg" type="xs:string">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Package File (if is java file)]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="name" type="xs:string" use="required">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Name File]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="type" type="xs:string" use="required">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Type File - Extension]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="append" type="xs:boolean" use="required">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Append content if exist File]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="comment" type="xs:string">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Append comment on File]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                                
+        
+        
+        <xs:attribute name="include" type="xs:string">
+                              
+          
+          <xs:annotation>
+                                    
+            
+            <xs:documentation>
+                                          
+              
+              <![CDATA[Include content from other file]]>
+                                        
+            
+            </xs:documentation>
+                                  
+          
+          </xs:annotation>
+                            
+        
+        </xs:attribute>
+                              
+      
+      
+      </xs:extension>
+                      
+    
+    
+    </xs:simpleContent>
+              
+  
+  
+  </xs:complexType>
+        
+  
+  
+  <xs:complexType name="resultGroup">
+            
+    
+    <xs:annotation>
+                  
+      
+      <xs:documentation>
+                        
+        
+        <![CDATA[<p>ResultGropup wrapped all element</p>
+<i>[parent group path]</i><b>/${module}/${layer}/${dir}/${pkg as directory}/${name}.${type}</b>
+<p>All elements will write to $ {module}/${layer}/${dir}/[result-file or result-group wrapped]</p>]]>
+                      
+      
+      </xs:documentation>
+                
+    
+    </xs:annotation>
+                
+    
+    
+    <xs:sequence>
+                        
+      
+      
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+                                
+        
+        
+        <xs:element name="result-group" type="hsk:resultGroup"/>
+                                
+        
+        
+        <xs:element name="result-file" type="hsk:resultFile"/>
+                              
+      
+      
+      </xs:choice>
+                      
+    
+    
+    </xs:sequence>
+                
+    
+    
+    <xs:attribute name="skip" type="xs:boolean" use="required">
+                  
+      
+      <xs:annotation>
+                        
+        
+        <xs:documentation>
+                              
+          
+          <![CDATA[Skip write result-file or result-group]]>
+                            
+        
+        </xs:documentation>
+                      
+      
+      </xs:annotation>
+                
+    
+    </xs:attribute>
+                
+    
+    
+    <xs:attribute name="parser" type="xs:string">
+                  
+      
+      <xs:annotation>
+                        
+        
+        <xs:documentation>
+                              
+          
+          <![CDATA[Parse Name for files group]]>
+                            
+        
+        </xs:documentation>
+                      
+      
+      </xs:annotation>
+                
+    
+    </xs:attribute>
+                
+    
+    
+    <xs:attribute name="module" type="xs:string">
+                  
+      
+      <xs:annotation>
+                        
+        
+        <xs:documentation>
+                              
+          
+          <![CDATA[Module Name for files group]]>
+                            
+        
+        </xs:documentation>
+                      
+      
+      </xs:annotation>
+                
+    
+    </xs:attribute>
+                
+    
+    
+    <xs:attribute name="layer" type="xs:string">
+                  
+      
+      <xs:annotation>
+                        
+        
+        <xs:documentation>
+                              
+          
+          <![CDATA[Layer Name for files group]]>
+                            
+        
+        </xs:documentation>
+                      
+      
+      </xs:annotation>
+                
+    
+    </xs:attribute>
+                
+    
+    
+    <xs:attribute name="dir" type="xs:string">
+                  
+      
+      <xs:annotation>
+                        
+        
+        <xs:documentation>
+                              
+          
+          <![CDATA[Parent Directory for files group]]>
+                            
+        
+        </xs:documentation>
+                      
+      
+      </xs:annotation>
+                
+    
+    </xs:attribute>
+              
+  
+  
+  </xs:complexType>
+      
+
+
+</xs:schema>
